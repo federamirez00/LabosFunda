@@ -40,16 +40,20 @@ void codificarTexto(char texto[]) {
         case 'o':
             texto[f] = 57;
             break;
+        // Caso en que el caracter no esté en la palabra murciélago, no se reemplazará el caracter por el código
         default:
             texto[f] = texto[f];
         }
     }
+    // Impresión de resultado
     cout << "Texto codificado: " << texto;
 }
 
 int main() {
+    // Declaración de arreglo
     char texto[100];
     cout << "Ingrese el texto a codificar:" << endl;
     cin.getline(texto, 100);
+    // Llamamos a la función que codificará el texto. Recibe como parámetro el arreglo texto.
     codificarTexto(texto);
 }

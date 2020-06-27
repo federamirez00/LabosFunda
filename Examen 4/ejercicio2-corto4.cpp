@@ -6,18 +6,21 @@ using namespace std;
 
 /* Función encargada de calcular la media de las estaturas. Recibe 
 como parámetros el arreglo que almacena los valores de las esturas. */
-int calculoMedia(float estaturas[]) {
-    // Variable utilizada como contador
+float calculoMedia(float estaturas[]) {
+    // Variable f utilizada como contador
     int f;
-    float suma, media;
+    float suma;
     for (f = 0; f < 25; f++) {
         suma = estaturas[f] + suma;
     }
-    media = suma/25;
-    cout<<"La media de las estaturas es: "<< fixed <<  setprecision(2) <<media<<" m"<<endl;
+    float media = suma/25;
+    // Retornamos el valor de la media
+    return media;
 }
 
-int determinarEstatura(float estaturas[], float media) {
+/* Función encargada de determinar si las estaturas son menores o mayores a la media.
+Recibe como parámetros el arreglo estaturas y el valor de la media. */
+void determinarEstaturas(float estaturas[], float media) {
     int f, mayor = 0, menor = 0;
     for (f = 0; f < 25; f++) {
         if (estaturas[f] > media) { // Si el valor del arreglo en la posición f es mayor a la media se suma 1 a la cuenta
@@ -26,7 +29,7 @@ int determinarEstatura(float estaturas[], float media) {
             menor++;
         }
     }
-    // Impresión de resultado
+    // Impresión de resultados
     cout<<"Las estaturas mayores a la media son "<<mayor<<endl;
     cout<<"Las estaturas menores a la media son "<<menor<<endl;
 }
@@ -37,13 +40,14 @@ int main() {
     /* El arreglo estarturas almacena todos los valores de las estaturas.
     La variable suma almacena la suma de todas las estaturas */
     float estaturas[25], media;
-    // Estructura for en donde se almacenan los valores
     for (f = 0; f < 25; f++) {
-        cout<<"Ingrese la estatura "<<i<<" en metros: "<<endl;
+        cout<<"Ingrese la estatura del alumno "<<i<<" en metros: "<<endl;
         cin>>estaturas[f];
         i++;
     }
-    // Llamando a la función calculoMedia y se envían los parámetros estaturas y suma
-    calculoMedia(estaturas);
-    determinarEstatura(estaturas, media);
+    // Asignamos el valor que retorna la función calculoMedia a la variable media
+    media = calculoMedia(estaturas);
+    cout<<"El promedio de las estaturas es: "<< fixed << setprecision(2) << media<<" m"<<endl;
+    // Llamamos a la función determinarEstaturas, y enviamos los parámetros estaturas[] y media
+    determinarEstaturas(estaturas, media);
 }
